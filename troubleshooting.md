@@ -117,6 +117,11 @@ Expected Output:
 ```
 - After this you may encounter the issue related to region, account id and arn. For that kindly follow the below command
 
+Get the correct scaling policy ARN for your Auto Scaling Group:
+```bash
+aws autoscaling describe-policies --auto-scaling-group-name terraform-20250327123456789107 --query "ScalingPolicies[*].PolicyARN" --region eu-west-3
+```
+
 Increase EC2
 ```bash
 aws cloudwatch put-metric-alarm \
@@ -145,10 +150,6 @@ aws cloudwatch put-metric-alarm \
   --comparison-operator "LessThanOrEqualToThreshold" \
   --dimensions Name=AutoScalingGroupName,Value=terraform-20250327081805056400000007 \
   --alarm-actions "arn:aws:autoscaling:eu-west-3:1234567910:scalingPolicy:7e6jf2dd-5nbb-4mmf-844c-f44551066674:autoScalingGroupName/terraform-20250327012345678910:policyName/reduce-ec2"
-```
-Get the correct scaling policy ARN for your Auto Scaling Group:
-```bash
-aws autoscaling describe-policies --auto-scaling-group-name terraform-20250327123456789107 --query "ScalingPolicies[*].PolicyARN" --region eu-west-3
 ```
 
 ### PROCESS 1
