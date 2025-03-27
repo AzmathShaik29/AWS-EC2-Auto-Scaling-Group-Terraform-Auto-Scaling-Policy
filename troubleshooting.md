@@ -122,7 +122,7 @@ Get the correct scaling policy ARN for your Auto Scaling Group:
 aws autoscaling describe-policies --auto-scaling-group-name terraform-20250327123456789107 --query "ScalingPolicies[*].PolicyARN" --region eu-west-3
 ```
 
-Increase EC2
+CloudWatch alarm for Scale-Up
 ```bash
 aws cloudwatch put-metric-alarm \
   --alarm-name "increase-ec2-alarm" \
@@ -137,7 +137,7 @@ aws cloudwatch put-metric-alarm \
   --alarm-actions "arn:aws:autoscaling:eu-west-3:12345678910:scalingPolicy:1d56bb04-2r92-4564-n5e0-012310dbe664:autoScalingGroupName/terraform-20250327012345678910:policyName/increase-ec2"
 ```
 
-Reduce EC2
+CloudWatch alarm for Scale-Down
 ```bash
 aws cloudwatch put-metric-alarm \
   --alarm-name "reduce-ec2-alarm" \
